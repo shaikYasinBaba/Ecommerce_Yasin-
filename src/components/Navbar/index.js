@@ -39,8 +39,8 @@ function DrawerAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Ecommerce
+      <Typography variant="h6" sx={{ my: 2 }} onClick={() => navigate('/')}>
+        Ecommerce 
       </Typography>
       <Divider />
       <List>

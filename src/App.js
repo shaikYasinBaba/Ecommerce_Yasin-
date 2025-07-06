@@ -11,6 +11,8 @@ import {
   IconButton,
   Button,
 } from '@mui/material';
+import TuneIcon from '@mui/icons-material/Tune';
+import SearchIcon from '@mui/icons-material/Search';
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import ErrorIcon from '@mui/icons-material/Error';
 import CloseIcon from '@mui/icons-material/Close';
@@ -119,20 +121,38 @@ function App() {
                     justifyContent="space-between"
                     alignItems="center"
                   >
-                    <TextField
-                      label="Search"
-                      variant="outlined"
-                      size="small"
-                      onChange={e => setSearch(e.target.value)}
-                      sx={{ flex: 1, minWidth: '50%', maxWidth: '80%', marginBottom: '10px' }}
-                    />
-                    <Button
-                      variant="contained"
-                      onClick={openDialogHandler}
-                      sx={{ whiteSpace: 'nowrap', mb: '10px' }}
-                    >
-                      Filters
-                    </Button>
+                                    
+                  <TextField
+                    label={
+                      <Box display="flex" alignItems="center" gap={0.5}>
+                        <SearchIcon fontSize="small" />
+                        Search
+                      </Box>
+                    }
+                    variant="outlined"
+                    size="small"
+                    onChange={(e) => setSearch(e.target.value)}
+                    sx={{ flex: 1, minWidth: '50%', maxWidth: '80%', marginBottom: '10px'  }}
+                  />
+                  <Button
+                  variant="contained"
+                  onClick={openDialogHandler}
+                  startIcon={<TuneIcon />}
+                  sx={{
+                    mb: 1,
+                    px: 2,
+                    py: 1,
+                    textTransform: 'none',
+                    fontWeight: 'bold',
+                    backgroundColor: '#1976d2',
+                    '&:hover': {
+                      backgroundColor: '#115293',
+                    },
+                  }}
+                >
+                  Filters
+                </Button>
+
                   </Box>
 
                   {/* Manual Filter Dialog */}

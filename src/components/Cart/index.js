@@ -15,6 +15,8 @@ import DialogActions from '@mui/material/DialogActions';
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+
 
 export default function MediaCard({ item }) {
   const [dialogOpen, setDialogOpen] = React.useState(false);
@@ -92,11 +94,11 @@ export default function MediaCard({ item }) {
           </Stack>
         </CardContent>
         <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Button size="small" variant="outlined" sx={{ fontSize: '0.6rem', mb: 1 }} component={Link} to={`/product/${item.id}`}>
+          <Button size="small" variant="contained" sx={{ fontSize: '0.5rem', mb: 1 }} component={Link} to={`/product/${item.id}`}>
             More Details
           </Button>
-          <Button size="small" variant="outlined" sx={{ fontSize: '0.6rem', mb: 1 }} onClick={handleAddToCart}>
-            Add to Cart
+          <Button size="small" variant="outlined" sx={{ fontSize: '0.5rem', mb: 1 }} onClick={handleAddToCart}>
+           <ShoppingCartCheckoutIcon sx={{fontSize:'1rem'}}/> Add to Cart
           </Button>
         </CardActions>
       </Card>
