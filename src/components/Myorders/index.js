@@ -10,9 +10,14 @@ import {
   Divider,
   Snackbar,
   Alert,
-  Tooltip
+  Tooltip,
 } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
+import PaymentIcon from '@mui/icons-material/Payment';
+import DiscountIcon from '@mui/icons-material/Discount';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -34,6 +39,7 @@ const MyOrders = () => {
   return (
     <Box sx={{ p: 4 }}>
       <Typography variant="h4" gutterBottom>
+        <ShoppingCartIcon sx={{ mb: '-5px', mr: 1 , fontSize:'2rem'}} />
         My Orders
       </Typography>
 
@@ -64,11 +70,14 @@ const MyOrders = () => {
               <AccordionSummary expandIcon={<ArrowDropDownIcon />}>
                 <Grid container alignItems="center" spacing={1}>
                   <Grid item xs={12} sm={4}>
-                    <Typography fontWeight="bold">Order #{index + 1}</Typography>
+                    <Typography fontWeight="bold" >
+                      
+                      Order #{index + 1}
+                    </Typography>
                   </Grid>
                   <Grid item xs={12} sm={5}>
                     <Tooltip title={summaryItem.title || 'Untitled Product'}>
-                      <Typography noWrap>
+                      <Typography noWrap>              
                         {shortTitle} (x{summaryItem.quantity})
                       </Typography>
                     </Tooltip>
@@ -86,7 +95,10 @@ const MyOrders = () => {
                   <Grid container spacing={2}>
                     {order.items.map((item, idx) => (
                       <Grid item xs={12} sm={6} key={idx}>
-                        <Typography>{item.title || 'Untitled'} (x{item.quantity})</Typography>
+                        <Typography>
+                          <Inventory2Icon sx={{ fontSize: '1rem', mr: 0.5 }} />
+                          {item.title || 'Untitled'} (x{item.quantity})
+                        </Typography>
                         <Typography variant="body2">
                           ${item.price} × {item.quantity} = ${(item.price * item.quantity).toFixed(2)}
                         </Typography>
@@ -97,15 +109,22 @@ const MyOrders = () => {
                   <Divider sx={{ my: 2 }} />
 
                   <Grid container>
-                    <Grid item xs={6} display={'flex'} flexDirection={'column'}>
-                      <Typography variant="body2">Payment: {order.paymentMethod}</Typography>
-                      <Typography variant="body2" color="error" >
+                    <Grid item xs={6} display={'flex'} flexDirection={'column'} gap={1}>
+                      <Typography variant="body2">
+                        <PaymentIcon sx={{ fontSize: '0.8rem', mr: 0.5 }} />
+                        Payment: {order.paymentMethod}
+                      </Typography>
+                      <Typography variant="body2" color="error">
+                        <DiscountIcon sx={{ fontSize: '0.8rem', mr:  0.5 }} />
                         Discount: -${totalDiscount.toFixed(2)}
                       </Typography>
                     </Grid>
                     <Grid item xs={6} textAlign="right" marginLeft={'1rem'}>
-                      <Typography variant="body2">Subtotal: ${totalPrice.toFixed(2)}</Typography>
-                      <Typography fontWeight="bold">
+                      <Typography variant="body2">
+                        Subtotal: ${totalPrice.toFixed(2)}
+                      </Typography>
+                      <Typography fontWeight="bold" mt={'3'}>
+                        
                         Grand Total: ${grandTotal.toFixed(2)}
                       </Typography>
                     </Grid>
@@ -113,9 +132,11 @@ const MyOrders = () => {
 
                   <Box display="flex" justifyContent="flex-start" mt={2}>
                     <Button
-                      variant="outlined"
+                      variant="contained"
                       color="error"
+                      startIcon={<CancelIcon />}
                       onClick={() => cancelOrder(index)}
+                      sx={{fontWeight:'900'}}
                     >
                       Cancel Order
                     </Button>

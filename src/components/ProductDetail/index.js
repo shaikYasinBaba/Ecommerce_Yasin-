@@ -1,5 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import FlashOnIcon from '@mui/icons-material/FlashOn';
 import {
   Box,
   Typography,
@@ -164,14 +166,34 @@ export default function ProductDetail() {
                 />
               ))}
             </Box>
-            <Stack direction={isWide ? 'row' : 'column'} spacing={2} m={3} sx={{ width: '100%' }}>
-              <Button variant="contained" sx={{ backgroundColor: '#ffa500', color: '#000', fontWeight: 'bold', flex: 1 }} onClick={handleAddToCartClick}>
-                Add to Cart
-              </Button>
-              <Button variant="contained" color="primary" sx={{ fontWeight: 'bold', flex: 1 }} onClick={handleBuyNowClick}>
-                Buy Now
-              </Button>
-            </Stack>
+            
+<Stack direction={isWide ? 'row' : 'column'} spacing={2} m={3} sx={{ width: '100%' }}>
+  <Button
+    variant="contained"
+    sx={{
+      backgroundColor: '#ffa500',
+      color: 'primary',
+      fontWeight: 'bold',
+      flex: 1,
+      gap: 1,
+      '&:hover': { backgroundColor: '#ff9900' },
+    }}
+    onClick={handleAddToCartClick}
+    startIcon={<AddShoppingCartIcon />}
+  >
+    Add to Cart
+  </Button>
+
+  <Button
+    variant="contained"
+    color="primary"
+    sx={{ fontWeight: 'bold', flex: 1, gap: 1 }}
+    onClick={handleBuyNowClick}
+    startIcon={<FlashOnIcon />}
+  >
+    Buy Now
+  </Button>
+</Stack>
           </Box>
         </Grid>
 
